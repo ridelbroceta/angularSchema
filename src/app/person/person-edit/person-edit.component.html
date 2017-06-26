@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-xs-12">
-		<form [formGroup]="personForm" (ngSubmit)="onSubmit()">
+		<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 		
 				<input
 					type="hidden"
@@ -48,10 +48,8 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<button
-				type="submit"
-				class="btn btn-primary"
-				[disabled]="!personForm.valid">Save</button>
+				<button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Save</button>
+				<button *ngIf="editMode" type="button" class="btn btn-warning" (click)="onDelete()">Delete</button>
 				<button type="button" class="btn btn-danger" (click)="onClose()">Close</button>
 			</div>
 		</div>

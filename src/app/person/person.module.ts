@@ -5,11 +5,11 @@ import { /*FormsModule,*/ ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule  } from '@angular/router';
 
+import { CommonDataService } from '../shared/common-data.service';
 
 import { PersonComponent } from './person.component';
 import { PersonListComponent } from './person-list/person-list.component';
 import { PersonEditComponent } from './person-edit/person-edit.component';
-import { PersonDetailsComponent } from './person-details/person-details.component';
 import { PersonStartComponent } from './person-start/person-start.component';
 import { PersonTestComponent } from './person-test/person-test.component';
 
@@ -29,7 +29,6 @@ import { WindowModalModule } from './../window-modal/window-modal.module';
     PersonComponent,
     PersonListComponent,
     PersonEditComponent,
-    PersonDetailsComponent,
     PersonStartComponent,
     PersonTestComponent,
     //WindowModalComponent,
@@ -43,7 +42,7 @@ import { WindowModalModule } from './../window-modal/window-modal.module';
     WindowModalModule,
   ],
   providers: [
-    PersonService,
+    { provide: CommonDataService, useClass: PersonService },
     //WindowModalService,
   ],
 })

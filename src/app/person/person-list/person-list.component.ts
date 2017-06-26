@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Person } from '../person.model';
-import { PersonService } from '../person.service';
-//import { WindowModalService } from '../../window-modal/window-modal.service';
+import { CommonDataService } from '../../shared/common-data.service';
 
+import { Person } from '../person.model';
+
+//import { PersonService } from '../person.service';
+//import { WindowModalService } from '../../window-modal/window-modal.service';
 
 //declare var $: any;
 
@@ -19,17 +21,17 @@ export class PersonListComponent implements OnInit{
  subscription: Subscription;
   
 
-  constructor(private personService: PersonService, private router: Router, private route: ActivatedRoute) {
+  constructor(private personService: CommonDataService, private router: Router, private route: ActivatedRoute) {
    }
 
   ngOnInit() {
-    this.subscription = this.personService.personsChanged
+    this.subscription = this.personService.elementsChanged
       .subscribe(
         (persons: Person[]) => {
           this.persons = persons;
         }
       );    
-    this.persons = this.personService.getPersons();
+    this.persons = this.personService.list();
   }
 
  onNewPerson() {

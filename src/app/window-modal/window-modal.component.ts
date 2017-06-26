@@ -5,9 +5,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 declare var $ : any;
 
-import { WindowModalService, MyWindowModal, MyServiceForModal } from './window-modal.service';
+import { WindowModalService } from './window-modal.service';
 
-
+import { MyServiceForModal, MyWindowModal } from './my-ibase-to-window-modal';
 
 
 @Component({
@@ -26,9 +26,7 @@ export class WindowModalComponent implements OnInit, OnDestroy, MyWindowModal {
     this.serviceForModal = windowModalService;
   }
 
-  ngOnInit() {
-
-
+    ngOnInit() {
 
     // ensure id attribute exists
     if (!this.id) {
